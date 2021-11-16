@@ -28,13 +28,13 @@ Setup.exe 파일을 이용하여 다운로드 가능합니다.
 
 <div class="img-txt-wrap">
     <div class="img-wrap">
-        <img width="300"  src="https://user-images.githubusercontent.com/83346490/141977004-51dd928d-9452-4a5e-81a8-670d9380d3c9.png"/>
+        <img width="500"  src="https://user-images.githubusercontent.com/83346490/141977004-51dd928d-9452-4a5e-81a8-670d9380d3c9.png"/>
     </div>
     <div class="img-wrap">
-        <img width="300" src="https://user-images.githubusercontent.com/83346490/141977067-6c16daee-3267-4a3e-9507-4107272927d5.png"/>
+        <img width="500" src="https://user-images.githubusercontent.com/83346490/141977067-6c16daee-3267-4a3e-9507-4107272927d5.png"/>
     </div>
     <div class="img-wrap">
-        <img width="300" src="https://user-images.githubusercontent.com/83346490/141977102-d4680eaa-61bd-427c-989a-c9def09a54d8.png"/>
+        <img width="500" src="https://user-images.githubusercontent.com/83346490/141977102-d4680eaa-61bd-427c-989a-c9def09a54d8.png"/>
     </div>
 </div>
 
