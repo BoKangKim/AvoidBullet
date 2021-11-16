@@ -1,4 +1,4 @@
-# 2048 Block Game
+# Avoid Bullet
 
 ## 🕹About
 
