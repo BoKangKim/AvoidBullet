@@ -17,6 +17,11 @@ bool SceneIngame::init(int level)
 {
 	if (!Scene::initWithPhysics()) return false;
 
+
+	auto world = getPhysicsWorld();
+	if (DEBUG_MODE) world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	world->setGravity(Vec2::ZERO);
+
 	set_level(level);
 	auto keybd = EventListenerKeyboard::create();
 	keybd->onKeyPressed = std::bind(&SceneIngame::onKeyPressed, this, std::placeholders::_1, std::placeholders::_2);
@@ -35,7 +40,7 @@ bool SceneIngame::init(int level)
 	overPanel->addChild(btnHome = Button::create("res/button_blue.png", "res/button_yellow.png", "res/button_grey.png"));
 	overPanel->addChild(btnQuit = Button::create("res/button_blue.png", "res/button_yellow.png", "res/button_grey.png"));
 
-	lbOver = Label::createWithTTF("Game Over",FONT_NAME,64.0f);
+	lbOver = Label::createWithTTF("Game Over", FONT_NAME, 64.0f);
 	overPanel->addChild(lbOver);
 	lbOver->setColor(Color3B(0, 0, 0));
 	lbOver->setPosition(Vec2(600 / 2, 300));
@@ -55,32 +60,16 @@ bool SceneIngame::init(int level)
 	btnHome->setTitleText("HOME");
 	btnQuit->setTitleText("QUIT");
 
-	btnHome->addClickEventListener([=](Ref* r) {
-		auto scene = SceneHome::create();
-		auto transit = TransitionSlideInL::create(0.125f, scene);
-		Director::getInstance()->replaceScene(transit);
-	});
-	btnQuit->addClickEventListener([=](Ref* r) {
-		Director::getInstance()->end();
-	});
 
 	schedule(CC_SCHEDULE_SELECTOR(SceneIngame::logic));
-
 	hideOverPanel();
+
 	return true;
 }
 
 void SceneIngame::onEnter()
 {
 	Scene::onEnter();
-
-	auto world = getPhysicsWorld();
-	if (DEBUG_MODE) world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-	world->setGravity(Vec2::ZERO);
-
-	player = Player::create();
-	player->setPosition(Vec2(1280/2, 720/2));
-	addChild(player);
 
 	EnemyAttackType levelType = EnemyAttackType::NORMAL;
 	if (level == 0) {
@@ -117,6 +106,21 @@ void SceneIngame::onEnter()
 		enemy->addComponent(EnemyAttackRoutine::create(levelType));
 		addChild(enemy);
 	}
+	
+	btnHome->addClickEventListener([=](Ref* r) {
+		auto scene = SceneHome::create();
+		auto transit = TransitionSlideInL::create(0.125f, scene);
+		Director::getInstance()->replaceScene(transit);
+		//world->removeAllBodies();
+	});
+
+	btnQuit->addClickEventListener([=](Ref* r) {
+		Director::getInstance()->end();
+	});
+
+	player = Player::create();
+	player->setPosition(Vec2(1280 / 2, 720 / 2));
+	addChild(player);
 }
 
 Unit * SceneIngame::getPlayer()
