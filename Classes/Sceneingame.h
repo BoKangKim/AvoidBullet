@@ -20,6 +20,7 @@ public:
 	static SceneIngame* create(int level);
 	virtual bool init(int level);
 	virtual void onEnter() override;
+	void initUI();
 
 	Unit* getPlayer();
 

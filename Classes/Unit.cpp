@@ -11,7 +11,7 @@ Unit * Unit::create(const Size & size, int bitmask, int tag)
 
 bool Unit::init(const Size & size, int bitmask, int tag)
 {
-	if (!Node::init()) return false;
+	if (!Node::init ()) return false;
 
 	body = PhysicsBody::createBox(size);
 	body->setTag(tag);

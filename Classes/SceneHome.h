@@ -13,6 +13,7 @@ public:
 
 	static SceneHome* create();
 	virtual bool init() override;
+	virtual void onEnter() override;
 };
 
 #endif // !__SCENE_HOME_H__

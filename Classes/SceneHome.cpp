@@ -15,7 +15,7 @@ bool SceneHome::init()
 	if (!Scene::init()) return false;
 
 	Sprite* img = Sprite::create("res/titleImg.png");
-	addChild(img);
+	this->addChild(img);
 	img->setPosition(Vec2(1280/2, 720/2));
 
 	addChild(btnEasy = Button::create("res/button_blue.png", "res/button_yellow.png", "res/button_grey.png"));
@@ -48,9 +48,16 @@ bool SceneHome::init()
 	btnDifficult->setTitleText("DIFFICULT");
 	btnQuit->setTitleText("QUIT");
 
+	return true;
+}
+
+void SceneHome::onEnter()
+{
+	Scene::onEnter();
+
 	btnEasy->addClickEventListener([=](Ref* r) {
 		auto scene = SceneIngame::create(0);
-		auto transit = TransitionSlideInR::create(0.125f,scene);
+		auto transit = TransitionSlideInR::create(0.125f, scene);
 		Director::getInstance()->replaceScene(transit);
 	});
 	btnNormal->addClickEventListener([=](Ref* r) {
@@ -67,5 +74,4 @@ bool SceneHome::init()
 		Director::getInstance()->end();
 	});
 
-	return true;
 }
