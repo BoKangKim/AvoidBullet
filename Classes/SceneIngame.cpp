@@ -113,10 +113,11 @@ void SceneIngame::initUI()
 	btnQuit->setTitleText("QUIT");
 
 	btnHome->addClickEventListener([=](Ref* r) {
+		//world->removeAllBodies();
 		auto scene = SceneHome::create();
 		auto transit = TransitionSlideInL::create(0.125f, scene);
 		Director::getInstance()->replaceScene(transit);
-		//world->removeAllBodies();
+		this->removeAllChildren();
 	});
 
 	btnQuit->addClickEventListener([=](Ref* r) {
